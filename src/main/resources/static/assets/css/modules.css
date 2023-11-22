@@ -1,0 +1,12 @@
+@import url(style.css);
+
+#explore{
+    margin-top:100px;  
+   font-family: var( --font-default); 
+   color: var(--text-light);
+}
+#modules{
+    margin-top: 150px;
+    font-family: var( --font-default);
+    color: var( --text-light) ;
+}

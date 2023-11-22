@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark" xmlns:th="www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:locale" content="pt_BR">
+	<meta property="og:description"
+		content="Entre na residência em software da devHOME™ e aprenda Front-end, Back-end na prática com a maior plataforma de tecnologia do momento">
+	<meta name="description"
+		content="Entre na residência em software da devHOME™ e aprenda Front-end, Back-end na prática com a maior plataforma de tecnologia do momento">
+	<meta property="og:title" content="devHOME™ | Residência em Software">
+	<meta property="og:site_name" content="devHOME™">
+	<meta property="og:url" content="https://www.devHOME.com.br">
+	<link rel="canonical" href="https://www.devHOME.com.br">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="/assets/css/menu.css">
+	<link rel="stylesheet" href="/assets/css/form.css">
+	
+	<title> ADM - Editar Empresa | devHOME™ </title>
+</head>
+
+<body>
+	<div th:replace="default :: navbar"></div>
+
+	<main>
+		<div class="contentor">
+			<div class="setor-painel">
+				<div class="menu-container" id="menu-container">
+					<div class="logo-container">
+						<img src="./assets/img/logo/logo-blue-6.png" alt="Logo do Site">
+					</div>
+					<a href="#" onclick="closeMenu()">Fechar</a>
+					<a th:href="@{/empresas/novo}">Cadastrar Empresa</a>
+					<a th:href="@{/empresas}">Listar Empresas</a>
+					<a th:href="@{/cursos/novo}">Cadastrar Cursos</a>
+					<a th:href="@{/cursos}">Listar Cursos</a>
+					<a th:href="@{/vagas/novo}">Cadastrar Vagas</a>
+					<a th:href="@{/vagas}">Listar Vagas</a>
+					<a th:href="@{/adm.html}">Sair</a>
+				</div>
+
+				<div class="content" id="content">
+					<div class="menu-btn-container">
+						<div class="menu-btn" onclick="openMenu()">&#9776;</div>
+					</div>
+				</div>
+
+				<div class="evento">
+					<div class="form-signin w-100 m-auto">
+						<div class="form-body">
+							<form class="form-row" th:action="@{/empresas/editar/{id}(id=${empresa.id})}"
+								th:object="${empresa}" method="post">
+								<a href="/index.html">
+									<img class="mb-4" src="/assets/img/icon/icon-blue-2.png" alt="devHOME™ logo"
+										id="icon-logo">
+								</a>
+								<h1 id="typing-header" class="h3 mb-3 fw-normal">Atualizar Empresa</h1>
+								<div class="form-group">
+									<label for="id">ID:</label> <input type="text" class="form-control" id="id"
+										name="id" th:field="*{id}" th:readonly="readonly">
+								</div>
+								<div class="form-group">
+									<label for="nomeEmpresa">Nome da Empresa:</label>
+									<input type="text" class="form-control" id="nomeEmpresa"
+										placeholder="Digite o nome da empresa:" required th:field="*{nomeEmpresa}">
+								</div>
+								<div class="form-group">
+									<label for="nomeResponsavel">Nome do Responsável:</label>
+									<input type="text" class="form-control" id="nomeResponsavel"
+										placeholder="Digite o nome do responsável:" required
+										th:field="*{nomeResponsavel}">
+								</div>
+								<div class="form-group">
+									<label for="cnpj">CNPJ (Cadastro Nacional da Pessoa Jurídica):</label>
+									<input type="text" class="form-control" id="cnpj"
+										placeholder="Digite o número de identificação fiscal da empresa:" required
+										th:field="*{cnpj}">
+								</div>
+								<div class="form-group">
+									<label for="dataFundacao">Data de Fundação:</label>
+									<input type="date" class="form-control" id="dataFundacao" required
+										th:field="*{dataFundacao}">
+								</div>
+								<div class="form-group">
+									<label for="telefone">Número de Telefone:</label>
+									<input type="tel" class="form-control" id="telefone"
+										placeholder="Digite o número de telefone:" required th:field="*{telefone}">
+								</div>
+								<div class="form-group">
+									<label for="setorAtividade">Setor de Atividade:</label>
+									<input type="text" class="form-control" id="setorAtividade"
+										placeholder="Digite o setor de atividade:" required th:field="*{setor}">
+								</div>
+								<div class="form-group">
+									<label for="email">E-mail:</label>
+									<input type="email" class="form-control" id="email" placeholder="Digite seu e-mail"
+										required th:field="*{email}">
+								</div>
+								<div class="form-group">
+									<label for="endereco">Endereço Comercial:</label>
+									<input type="text" class="form-control" id="endereco"
+										placeholder="Digite o endereço comercial:" required th:field="*{endereco}">
+								</div>
+								<button class="btn btn-primary w-100 py-2" type="submit">submit</button>
+								<p class="mt-5 mb-3 text-body-secondary">
+									© 2023 - devHOME™
+								</p>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<div class="b-example-divider"></div>
+	<div th:replace="default :: footer"></div>
+</body>
+<script src="/assets/script/menu.js"></script>
+
+</html>
